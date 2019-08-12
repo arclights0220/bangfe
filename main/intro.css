@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    font-family: 'Red Hat Text';
 }
 #topBar{
     width: 100%;
@@ -74,6 +75,8 @@ body{
     width: 100%;
     transition: margin-left .5s;
     padding-left: 10px;
+    box-sizing: border-box;
+    height: 100%;
   }
 
   #myProject, #creNew, #login{
