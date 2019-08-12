@@ -1,0 +1,68 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+#topBar{
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    background-color: #142322;
+    font-family: 'Red Hat Text';
+}
+
+.logo{
+    font-size: 2.5em;
+    padding-left: 30px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+#creNew{
+    font-size: 1.7em;
+    padding-right: 30px;
+    color: #FFFFFF;
+    opacity: 0.8;
+}
+
+.Leftnav{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 70px;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .Leftnav a{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .Leftnav a:hover{
+    color: #f1f1f1;
+  }
+
+  .closebtn{
+      position: absolute;
+      top: -1px;
+      right: 10px;
+      padding: 0;
+  }
+  
+  #main {
+    margin-top: 70px;
+    width: 100%;
+    transition: margin-left .5s;
+    padding-left: 10px;
+  }
