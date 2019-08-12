@@ -16,21 +16,23 @@
         </div>
         <input type="text" name="username" id="username" placeholder="username">
         <input type="password" name="password" id="password" placeholder="password">
-        <input type="submit" value="register">
+        <input type="submit" value="register" id="resisterbtn">
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <script>
-        axios.post('http://localhost:8000/login/new', 
+        document.getElementById("registerbtn").addEventListener("click", event => {
+            axios.post('http://localhost:8000/login/new', 
         {
-            username: document.getElementById("username").value,
+            username: document.getElementById("username").value ,
             password: document.getElementById("password").value
         })
         .then(function (response){
-            console.log(response);
 
+            console.log(response);
         })
         .catch(function (error) {
             console.log(error);
+        })
         })
     </script>
 </body>
