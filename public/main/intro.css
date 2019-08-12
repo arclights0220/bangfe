@@ -77,7 +77,6 @@ body{
     transition: margin-left .5s;
     padding-left: 10px;
     box-sizing: border-box;
-    height: 100%;
   }
 
   #myProject, #creNew, #login{
