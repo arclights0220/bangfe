@@ -9,17 +9,23 @@ function closeLNav() {
 }
 var isOpen = 1;
 
- var lnav = document.getElementById("Lnbtn");
+var lnav = document.getElementById("Lnbtn");
 
- document.addEventListener("keydown", (event)=>{
+document.addEventListener("keydown", (event) => {
     var x = event.which;
-    if(x == 9){
-        if(isOpen == 1){
+    if (x == 9) {
+        if (isOpen == 1) {
             openLNav();
         }
-        else if(isOpen == 0){
+        else if (isOpen == 0) {
             closeLNav();
         }
         event.preventDefault();
     }
- })
+})
+
+
+
+
+
+
