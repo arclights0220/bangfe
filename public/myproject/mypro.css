@@ -140,13 +140,15 @@ body {
 
 #myProject,
 #creNew,
-#login {
+#login,
+#resister {
     transition: 1s;
 }
 
 #myProject:hover,
 #creNew:hover,
-#login:hover {
-    color: #00FFEE;
-    text-shadow: 0px 0.1px white;
+#login:hover,
+#resister:hover {
+  color: #00FFEE;
+  text-shadow: 0px 0.1px white;
 }
