@@ -1,14 +1,12 @@
   body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
     font-family: 'Red Hat Text';
   }
 
   #topBar {
     width: 100%;
-    height: 60px;
+    height: 5vh;
     position: fixed;
     display: flex;
     justify-content: space-between;
@@ -16,6 +14,7 @@
     top: 0;
     background-color: #142322;
     font-family: 'Red Hat Text';
+    margin-bottom: 1vh;
   }
 
   .logo {
@@ -46,15 +45,19 @@
     height: 100%;
     width: 0;
     position: fixed;
-    top: 60px;
+    top: 5vh;
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
     padding-left: 0;
     left: 0;
+    font-size: 2em;
+    display: flex;
+    z-index: 10000;
+    color: #818181;
   }
 
+  
 
   .Leftnav a {
     padding: 8px 8px 8px 32px;
@@ -62,7 +65,7 @@
     font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s;
+    transition: 0.3s; 
   }
 
   .Leftnav a:hover {
@@ -77,12 +80,11 @@
   }
 
   #main {
-    margin-top: 60px;
     width: 100%;
-    transition: margin-left .5s;
-    padding-left: 10px;
-    box-sizing: border-box;
+    height: 95vh;
     display: flex;
+    margin-top: 5vh;
+    transition: margin-left .5s;
   }
 
   #myProject,
@@ -97,22 +99,57 @@
     color: #00FFEE;
     text-shadow: 0px 0.1px white;
   }
-
-  #maincanvas{
+  #canvas{
     border: 1px solid black;
     position: absolute;
-    margin-left: 70px;
-    z-index: -100;
-    top: 100px;
-    bottom: 40px;
-
+    left: 4vw;
+    top: 8vh;
   }
-  .RNav{
-    position: absolute;
-    right: 0;
-    margin: 0;
+  .rnav{  
+    width: 8vw;
+    height: 70vh;
     border: 1px solid black;
-    margin: auto;
-    width: 100px;
-    height: 86vh;
+  }
+  #pageview{
+    width: 280px;
+    height: 100%;
+    border-right: 1px solid gray;
+  }
+  #about{ 
+    margin-top: 40px;
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 10px 10px;
+  }
+
+  /* #textbox{
+    transition: 1s;
+  }
+
+  #textbox:hover{
+    color: #f1f1f1;
+  } */
+  .drawing{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .drawbtn{
+    background-color: white; 
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  .drawbtn:hover{
+    background-color: black;
+    color: white;
   }

@@ -1,5 +1,5 @@
 function openLNav() {
-    document.getElementById("LeftSidenav").style.width = "300px";
+    document.getElementById("LeftSidenav").style.width = "500px";
     isOpen = 0;
 }
 
@@ -23,6 +23,7 @@ document.addEventListener("keydown", (event) => {
         event.preventDefault();
     }
 })
+
 
 
 

@@ -1,6 +1,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link href="https://fonts.googleapis.com/css?family=Montserrat|Red+Hat+Text&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./intro.css">
+<script src="./fabric.min.js"></script>
 <title>LI : VE</title>
 </head>
 
@@ -15,20 +16,163 @@
         </div>
     </div>
     <div id="main">
-        <span id="Lnbtn" style="font-size:30px; cursor:pointer;" onclick="openLNav()">&#9776;</span>
+        <span id="Lnbtn" style="font-size:30px; cursor:pointer;margin-left: 10px;" onclick="openLNav()">&#9776;</span>
         <div id="LeftSidenav" class="Leftnav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeLNav()">&times;</a>
+            <div id="pageview"></div>
+            <div id="about">
+                <div class="drawing">
+                    <input type="button" value="start drawing" class="drawbtn" onclick="onStartDrawing();" />
+                    <input type="button" value="stop drawing" class="drawbtn" onclick="onStopDrawing();" />
+                    <input type="button" value="solid circle" class="drawbtn" onclick="onSolidCircle();" />
+                    <input type="button" value="solid rect" class="drawbtn" onclick="onSolidRect();" />
+                    <input type="button" value="zoom in" class="drawbtn" onclick="onZoomIn();" />
+                    <input type="button" value="zoom out" class="drawbtn" onclick="onZoomOut();" />
+                    <input type="button" value="reset zoom"class="drawbtn"  onclick="onResetZoom();" />
+                    <!-- <div id="textBox">create textbox</div> -->
+                </div>
+
+
+
+            </div>
         </div>
-
-        <canvas id="maincanvas" width="1650" height="870"></canvas>
-    </div>
-    <div class="RNav">
-
+        <div style="width: 7vw; height: 100%;"></div>
+        <div id="draw">
+            <div style="width: 100%;height: 3vh;"></div>
+            <canvas id="canvas" width="1760px" height="990px"></canvas>
+        </div>
+        <div style="width: 7vw; height: 100%;"></div>
     </div>
 
     <script src="./intro.js"></script>
     <script>
-        
+        var copiedObject;
+        var copiedObjects = new Array();
+        var canvasScale = 1;
+        var SCALE_FACTOR = 1.2;
+        var canvas = new fabric.Canvas('canvas', {
+            isDrawingMode: false
+        });
+
+        var onSolidCircle = function () {
+            canvas.add(new fabric.Circle({
+                radius: 30,
+                fill: '#f55',
+                top: 150,
+                left: 150
+            }));
+        }
+
+        var onSolidRect = function () {
+            var rect = new fabric.Rect({
+                top: 100,
+                left: 100,
+                width: 60,
+                height: 70,
+                fill: '',
+                selection: false,
+                fill: '#f55'
+            });
+
+            canvas.add(rect);
+        }
+
+        var onStartDrawing = function () {
+            canvas.isDrawingMode = true;
+        }
+
+        var onStopDrawing = function () {
+            canvas.isDrawingMode = false;
+        }
+
+        var onZoomIn = function () {
+
+            canvasScale = canvasScale * SCALE_FACTOR;
+
+            canvas.setHeight(canvas.getHeight() * SCALE_FACTOR);
+            canvas.setWidth(canvas.getWidth() * SCALE_FACTOR);
+
+            var objects = canvas.getObjects();
+            for (var i in objects) {
+                var scaleX = objects[i].scaleX;
+                var scaleY = objects[i].scaleY;
+                var left = objects[i].left;
+                var top = objects[i].top;
+
+                var tempScaleX = scaleX * SCALE_FACTOR;
+                var tempScaleY = scaleY * SCALE_FACTOR;
+                var tempLeft = left * SCALE_FACTOR;
+                var tempTop = top * SCALE_FACTOR;
+
+                objects[i].scaleX = tempScaleX;
+                objects[i].scaleY = tempScaleY;
+                objects[i].left = tempLeft;
+                objects[i].top = tempTop;
+
+                objects[i].setCoords();
+            }
+
+            canvas.renderAll();
+        }
+
+        var onZoomOut = function () {
+            canvasScale = canvasScale / SCALE_FACTOR;
+
+            canvas.setHeight(canvas.getHeight() * (1 / SCALE_FACTOR));
+            canvas.setWidth(canvas.getWidth() * (1 / SCALE_FACTOR));
+
+            var objects = canvas.getObjects();
+            for (var i in objects) {
+                var scaleX = objects[i].scaleX;
+                var scaleY = objects[i].scaleY;
+                var left = objects[i].left;
+                var top = objects[i].top;
+
+                var tempScaleX = scaleX * (1 / SCALE_FACTOR);
+                var tempScaleY = scaleY * (1 / SCALE_FACTOR);
+                var tempLeft = left * (1 / SCALE_FACTOR);
+                var tempTop = top * (1 / SCALE_FACTOR);
+
+                objects[i].scaleX = tempScaleX;
+                objects[i].scaleY = tempScaleY;
+                objects[i].left = tempLeft;
+                objects[i].top = tempTop;
+
+                objects[i].setCoords();
+            }
+
+            canvas.renderAll();
+        }
+
+        var onResetZoom = function () {
+
+            canvas.setHeight(canvas.getHeight() * (1 / canvasScale));
+            canvas.setWidth(canvas.getWidth() * (1 / canvasScale));
+
+            var objects = canvas.getObjects();
+            for (var i in objects) {
+                var scaleX = objects[i].scaleX;
+                var scaleY = objects[i].scaleY;
+                var left = objects[i].left;
+                var top = objects[i].top;
+
+                var tempScaleX = scaleX * (1 / canvasScale);
+                var tempScaleY = scaleY * (1 / canvasScale);
+                var tempLeft = left * (1 / canvasScale);
+                var tempTop = top * (1 / canvasScale);
+
+                objects[i].scaleX = tempScaleX;
+                objects[i].scaleY = tempScaleY;
+                objects[i].left = tempLeft;
+                objects[i].top = tempTop;
+
+                objects[i].setCoords();
+            }
+
+            canvas.renderAll();
+
+            canvasScale = 1;
+        }
     </script>
 </body>
 
