@@ -106,6 +106,7 @@
     position: absolute;
     left: 4vw;
     top: 8vh;
+    opacity: 0;
   }
   .rnav{  
     width: 8vw;
@@ -116,6 +117,8 @@
     width: 280px;
     height: 100%;
     border-right: 1px solid gray;
+    display: flex;
+    flex-direction: column;
   }
   #about{ 
     margin-top: 40px;
@@ -126,13 +129,6 @@
     padding: 10px 10px;
   }
 
-  /* #textbox{
-    transition: 1s;
-  }
-
-  #textbox:hover{
-    color: #f1f1f1;
-  } */
   .drawing{
     display: flex;
     flex-wrap: wrap;
@@ -154,4 +150,11 @@
   .drawbtn:hover{
     background-color: black;
     color: white;
+  }
+
+  .proname{
+    margin: 10px 40px;
+    width: 200px;
+    height: 40px;
+    font-size: 15px;
   }

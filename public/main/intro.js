@@ -10,7 +10,6 @@ function closeLNav() {
 var isOpen = 1;
 
 var lnav = document.getElementById("Lnbtn");
-
 document.addEventListener("keydown", (event) => {
     var x = event.which;
     if (x == 9) {
@@ -23,10 +22,4 @@ document.addEventListener("keydown", (event) => {
         event.preventDefault();
     }
 })
-
-
-
-
-
-
 

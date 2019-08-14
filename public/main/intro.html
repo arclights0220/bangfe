@@ -1,7 +1,9 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link href="https://fonts.googleapis.com/css?family=Montserrat|Red+Hat+Text&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./intro.css">
-<script src="./fabric.min.js"></script>
+<script src="../bin/fabric.min.js"></script>
+<script src="../bin/FileSaver.min.js"></script>
+<script src="../bin/jquery.min.js"></script>
 <title>LI : VE</title>
 </head>
 
@@ -19,7 +21,13 @@
         <span id="Lnbtn" style="font-size:30px; cursor:pointer;margin-left: 10px;" onclick="openLNav()">&#9776;</span>
         <div id="LeftSidenav" class="Leftnav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeLNav()">&times;</a>
-            <div id="pageview"></div>
+            <div id="pageview">
+                <input type="text" class="proname" placeholder="project name">
+                <div id="viewer">
+                    
+
+                </div>
+            </div>
             <div id="about">
                 <div class="drawing">
                     <input type="button" value="start drawing" class="drawbtn" onclick="onStartDrawing();" />
@@ -28,20 +36,18 @@
                     <input type="button" value="solid rect" class="drawbtn" onclick="onSolidRect();" />
                     <input type="button" value="zoom in" class="drawbtn" onclick="onZoomIn();" />
                     <input type="button" value="zoom out" class="drawbtn" onclick="onZoomOut();" />
-                    <input type="button" value="reset zoom"class="drawbtn"  onclick="onResetZoom();" />
+                    <input type="button" value="reset zoom" class="drawbtn" onclick="onResetZoom();" />
                     <!-- <div id="textBox">create textbox</div> -->
                 </div>
-
-
-
             </div>
         </div>
         <div style="width: 7vw; height: 100%;"></div>
         <div id="draw">
             <div style="width: 100%;height: 3vh;"></div>
-            <canvas id="canvas" width="1760px" height="990px"></canvas>
+            <div id="isCanvas">
+                <canvas id="canvas" width="1600px" height="900px"></canvas>
+            </div>
         </div>
-        <div style="width: 7vw; height: 100%;"></div>
     </div>
 
     <script src="./intro.js"></script>
@@ -50,6 +56,7 @@
         var copiedObjects = new Array();
         var canvasScale = 1;
         var SCALE_FACTOR = 1.2;
+        var main = document.getElementById("canvas")
         var canvas = new fabric.Canvas('canvas', {
             isDrawingMode: false
         });
